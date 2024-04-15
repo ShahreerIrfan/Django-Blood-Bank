@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<style>
+    .bg-hero-image {
+        position: relative;
+        background-image: url('/static/images/hero.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 90vh;
+        /* Adjust the height as needed */
+    }
+
+    .bg-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .bg-white.dark\:bg-gray-900 {
+        color: white;
+        /* Text color */
+    }
+
+    .container {
+        margin-top: 30px;
+    }
+
+    /* Media query for mobile devices */
+    @media (max-width: 768px) {
+        .bg-hero-image {
+            max-width: 100%;
+            max-height: 50vh;
+        }
+    }
+</style>
+
+
+
+<section class="bg-white dark:bg-gray-900 bg-hero-image relative">
+    <div class="bg-overlay"></div>
+    <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+        <div class="mr-auto place-self-center lg:col-span-7">
+            <h1
+                class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-white">
+                Payments tool for software companies</h1>
+            <p class="text-white max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl">From checkout to global
+                sales tax compliance, companies around the world use Flowbite to simplify their payment stack.</p>
+            <a href="#"
+                class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+                Get started
+                <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </a>
+            <a href="#"
+                class="text-white inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                Speak to Sales
+            </a>
+        </div>
+        <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+            <!-- Image content here -->
+        </div>
+    </div>
+</section>
+
+
+<!-- Card section -->
+
+<div class="container mx-auto">
+    <div class="flex justify-center"> <!-- Wrap the grid inside a flex container and center its content -->
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div
+                class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <a href="#">
+                    <img class="rounded-t-lg w-full" src="/static/images/laptop.jpeg" alt="" />
+                </a>
+                <div class="p-5">
+                    <a href="#">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                            technology acquisitions 2021</h5>
+                    </a>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
+                        technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                    <div class="flex justify-center md:justify-start">
+                        <!-- Align buttons center on mobile, start on larger screens -->
+                        <a href="#"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Read more
+                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <a href="#">
+                    <img class="rounded-t-lg w-full" src="/static/images/neak.jpeg" alt="" />
+                </a>
+                <div class="p-5">
+                    <a href="#">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                            technology acquisitions 2021</h5>
+                    </a>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
+                        technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                    <div class="flex justify-center md:justify-start">
+                        <!-- Align buttons center on mobile, start on larger screens -->
+                        <a href="#"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Read more
+                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <a href="#">
+                    <img class="rounded-t-lg w-full" src="/static/images/girls.jpeg" alt="" />
+                </a>
+                <div class="p-5">
+                    <a href="#">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                            technology acquisitions 2021</h5>
+                    </a>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
+                        technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                    <div class="flex justify-center md:justify-start">
+                        <!-- Align buttons center on mobile, start on larger screens -->
+                        <a href="#"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Read more
+                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ..Will need next time...... -->
+<section class="py-8 bg-blue-50 mt-10">
+    <div class="container mx-auto p-8 bg-white rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-6">Our All Blood Donors</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for profile in user_profiles %}
+            <div class="transition-transform transform hover:scale-110 duration-300 ease-in-out max-w-sm bg-gray-50 rounded-lg shadow-xl border border-gray-300 overflow-hidden hover:shadow-2xl dark:bg-gray-800">
+                <div class="p-6">
+                    <div class="flex justify-center">
+                        {% if profile.image %}
+                            <img class="h-32 w-32 rounded-full object-cover border-4 border-indigo-300 shadow-sm" src="{{ profile.image.url }}" alt="{{ profile.user.username }}">
+                        {% else %}
+                            <img class="h-32 w-32 rounded-full object-cover border-4 border-indigo-300 shadow-sm" src="/static/images/default_profile.png" alt="Default Profile">
+                        {% endif %}
+                    </div>
+                    <div class="text-left mt-4">
+                        <h5 class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+                            {{ profile.user.get_full_name|default:profile.user.username }}
+                        </h5>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                            Blood Group: {{ profile.blood_group }}
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            Phone: {{ profile.phone_number }}
+                        </p>
+                    </div>
+                    <div class="flex space-x-4 justify-start mt-5">
+                        <a href="{% url 'user_profile' username=profile.user.username %}"
+                            class="inline-flex items-center px-5 py-3 text-sm font-medium text-white bg-gradient-to-r from-green-400 to-blue-500 rounded-lg hover:bg-gradient-to-br focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-blue-800 shadow-lg">
+                            View Profile
+                        </a>
+                        <a href="#"
+                            class="inline-flex items-center px-5 py-3 text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-red-600 rounded-lg hover:bg-gradient-to-br focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-red-800 shadow-lg">
+                            Blood Request
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Pagination Controls -->
+        <div class="mt-8">
+            <nav aria-label="Page navigation example">
+                <ul class="inline-flex -space-x-px">
+                    {% if user_profiles.has_previous %}
+                    <li>
+                        <a href="?page={{ user_profiles.previous_page_number }}" id="pagination-prev" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-r-0 rounded-l-lg hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                    </li>
+                    {% endif %}
+                    {% for num in user_profiles.paginator.page_range %}
+                    <li>
+                        {% if user_profiles.number == num %}
+                        <a href="?page={{ num }}" id="pagination-page-{{ num }}" class="px-3 py-2 leading-tight  bg-blue-500 text-white hover:bg-blue-600 border dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                            {{ num }}
+                        </a>
+                        {% else %}
+                        <a href="?page={{ num }}" id="pagination-page-{{ num }}" class="px-3 py-2 leading-tight text-gray-500 bg-white border hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                            {{ num }}
+                        </a>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                    {% if user_profiles.has_next %}
+                    <li>
+                        <a href="?page={{ user_profiles.next_page_number }}" id="pagination-next" class="px-3 py-2 leading-tight text-gray-500 bg-white border rounded-r-lg hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const paginationLinks = document.querySelectorAll('a[id^="pagination-"]');
+    
+    paginationLinks.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor click behavior
+            const url = this.href;
+            localStorage.setItem('scrollPosition', window.scrollY); // Save current scroll position
+            window.location.href = url; // Proceed with the page reload
+        });
+    });
+
+    // When the page loads, check if we saved a scroll position
+    const savedPosition = localStorage.getItem('scrollPosition');
+    if (savedPosition) {
+        window.scrollTo(0, parseInt(savedPosition)); // Restore the scroll position
+        localStorage.removeItem('scrollPosition'); // Clear the saved position
+    }
+});
+</script>
+
+
+    
+
+
+{% endblock %}

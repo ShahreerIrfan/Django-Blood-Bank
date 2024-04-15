@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="flex justify-center items-center min-h-screen">
+    <div class="max-w-4xl w-full">
+        <form method="post" enctype="multipart/form-data" class="bg-white p-10 rounded-lg shadow-md">
+            {% csrf_token %}
+            <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800">Create Your Profile</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {% for field in form %}
+                <div class="mb-4 md:mb-0">
+                    <label for="{{ field.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">
+                        {% if field.html_name == 'height' %}
+                            Height (in feet)
+                        {% elif field.html_name == 'weight' %}
+                            Weight (in KG)
+                        {% else %}
+                            {{ field.label }}
+                        {% endif %}
+                    </label>
+                    {% if field.field.widget.input_type == 'date' %}
+                    <input type="date" name="{{ field.html_name }}" id="{{ field.id_for_label }}"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        {% if field.field.required %}required{% endif %}
+                        value="{{ field.value|date:'Y-m-d'|default_if_none:'' }}">
+                    {% elif field.field.widget.input_type == 'select' %}
+                    <select name="{{ field.html_name }}" id="{{ field.id_for_label }}"
+                        class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        {% if field.field.required %}required{% endif %}>
+                        {% for option_key, option_value in field.field.choices %}
+                        <option value="{{ option_key }}" {% if field.value|stringformat:"s" in option_key|stringformat:"s" %}selected{% endif %}>
+                            {{ option_value }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    {% elif field.field.widget.input_type == 'text' and field.html_name == 'height' %}
+                    <input type="text" name="{{ field.html_name }}" id="{{ field.id_for_label }}"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        {% if field.field.required %}required{% endif %}
+                        value="{{ field.value|default_if_none:'' }}"
+                        step="0.1"> <!-- Added step attribute for floating-point numbers -->
+                    {% else %}
+                    <input type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}"
+                        id="{{ field.id_for_label }}"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        {% if field.field.required %}required{% endif %} value="{{ field.value|default_if_none:'' }}">
+                    {% endif %}
+                    {% if field.errors %}
+                    <p class="text-red-500 text-xs italic">{{ field.errors.as_text }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="flex justify-center mt-8">
+                <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Create Profile
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
