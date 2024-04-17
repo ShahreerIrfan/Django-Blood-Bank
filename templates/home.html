@@ -160,9 +160,12 @@
 <!-- ..Will need next time...... -->
 <section class="py-8 bg-blue-50 mt-10">
     <div class="container mx-auto p-8 bg-white rounded-lg shadow-lg">
-        <h1 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-6">Our All Blood Donors</h1>
+        <h1 class="text-3xl font-bold text-center text-r dark:text-stone-500 mb-6 ">Our All Blood Donors</h1>
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
             {% for profile in user_profiles %}
+            
             <div class="transition-transform transform hover:scale-110 duration-300 ease-in-out max-w-sm bg-gray-50 rounded-lg shadow-xl border border-gray-300 overflow-hidden hover:shadow-2xl dark:bg-gray-800">
                 <div class="p-6">
                     <div class="flex justify-center">
@@ -201,24 +204,59 @@
         <div class="mt-8">
             <nav aria-label="Page navigation example">
                 <ul class="inline-flex -space-x-px">
+                    <!-- Previous Page Link -->
                     {% if user_profiles.has_previous %}
                     <li>
                         <a href="?page={{ user_profiles.previous_page_number }}" id="pagination-prev" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-r-0 rounded-l-lg hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
                     </li>
                     {% endif %}
-                    {% for num in user_profiles.paginator.page_range %}
+        
+                    <!-- Show first page -->
+                    {% if user_profiles.number > 3 %}
                     <li>
-                        {% if user_profiles.number == num %}
-                        <a href="?page={{ num }}" id="pagination-page-{{ num }}" class="px-3 py-2 leading-tight  bg-blue-500 text-white hover:bg-blue-600 border dark:border-gray-700 dark:bg-gray-700 dark:text-white">
-                            {{ num }}
-                        </a>
-                        {% else %}
-                        <a href="?page={{ num }}" id="pagination-page-{{ num }}" class="px-3 py-2 leading-tight text-gray-500 bg-white border hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                            {{ num }}
-                        </a>
-                        {% endif %}
+                        <a href="?page=1" class="px-3 py-2 leading-tight text-gray-500 bg-white border hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
                     </li>
+                    {% endif %}
+                    
+                    <!-- Show ellipsis if there are pages between the first page and current page range -->
+                    {% if user_profiles.number > 4 %}
+                    <li>
+                        <span class="px-3 py-2 leading-tight text-gray-500 bg-white border dark:bg-gray-800 dark:text-gray-400">...</span>
+                    </li>
+                    {% endif %}
+        
+                    <!-- Show current page range -->
+                    {% for num in user_profiles.paginator.page_range %}
+                        {% if num >= user_profiles.number|add:'-3' and num <= user_profiles.number|add:'3' %}
+                        <li>
+                            {% if user_profiles.number == num %}
+                            <a href="?page={{ num }}" id="pagination-page-{{ num }}" class="px-3 py-2 leading-tight  bg-blue-500 text-white hover:bg-blue-600 border dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                                {{ num }}
+                            </a>
+                            {% else %}
+                            <a href="?page={{ num }}" id="pagination-page-{{ num }}" class="px-3 py-2 leading-tight text-gray-500 bg-white border hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                {{ num }}
+                            </a>
+                            {% endif %}
+                        </li>
+                        {% endif %}
                     {% endfor %}
+        
+                    <!-- Show ellipsis if there are pages between current page range and the last page -->
+                    {% if user_profiles.number < user_profiles.paginator.num_pages|add:'-3' %}
+                    <li>
+                        <span class="px-3 py-2 leading-tight text-gray-500 bg-white border dark:bg-gray-800 dark:text-gray-400">...</span>
+                    </li>
+                    {% endif %}
+        
+                    <!-- Show last page -->
+                    {% if user_profiles.number < user_profiles.paginator.num_pages|add:'-2' %}
+                    <li>
+                        <a href="?page={{ user_profiles.paginator.num_pages }}" class="px-3 py-2 leading-tight text-gray-500 bg-white border hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{ user_profiles.paginator.num_pages }}</a>
+                    </li>
+                    {% endif %}
+        
+                    <!-- Next Page Link -->
                     {% if user_profiles.has_next %}
                     <li>
                         <a href="?page={{ user_profiles.next_page_number }}" id="pagination-next" class="px-3 py-2 leading-tight text-gray-500 bg-white border rounded-r-lg hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
@@ -227,6 +265,7 @@
                 </ul>
             </nav>
         </div>
+        
     </div>
 </section>
 

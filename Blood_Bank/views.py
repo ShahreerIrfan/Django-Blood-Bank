@@ -16,6 +16,5 @@ def home(request):
         user_profiles = paginator.page(1)
     except EmptyPage:
         user_profiles = paginator.page(paginator.num_pages)
-
     return render(request, 'home.html', {'user_profiles': user_profiles})
 

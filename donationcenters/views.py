@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from Accounts.constants import BLOOD_GROUP,GENDER,DISTRICT_CHOICES
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from django.urls import reverse
+
 
 
 
@@ -21,7 +23,7 @@ def donors(request):
         query &= Q(district=district)
 
     user_profiles_list = UserProfile.objects.select_related('user').filter(query)
-    paginator = Paginator(user_profiles_list, 6)
+    paginator = Paginator(user_profiles_list, 3)
     page = request.GET.get('page')
 
     try:
@@ -31,13 +33,28 @@ def donors(request):
     except EmptyPage:
         user_profiles = paginator.page(paginator.num_pages)
 
+    # Constructing the filter URL
+    filter_url = reverse('donors') + '?'
+    if blood_group:
+        filter_url += 'blood_group=' + blood_group + '&'
+    if gender:
+        filter_url += 'gender=' + gender + '&'
+    if district:
+        filter_url += 'district=' + district + '&'
+
     context = {
         'user_profiles': user_profiles,
         'BLOOD_GROUP': BLOOD_GROUP,
         'GENDER': GENDER,
-        'DISTRICT_CHOICES': DISTRICT_CHOICES
+        'DISTRICT_CHOICES': DISTRICT_CHOICES,
+        'filter_url': filter_url,
+        'blood_group': blood_group,
+        'gender': gender,
+        'district': district,
     }
     return render(request, 'donationcenters/all_donor.html', context)
+
+
 
 
 
