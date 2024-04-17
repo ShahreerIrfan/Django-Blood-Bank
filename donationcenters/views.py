@@ -23,7 +23,7 @@ def donors(request):
         query &= Q(district=district)
 
     user_profiles_list = UserProfile.objects.select_related('user').filter(query)
-    paginator = Paginator(user_profiles_list, 3)
+    paginator = Paginator(user_profiles_list, 6)
     page = request.GET.get('page')
 
     try:

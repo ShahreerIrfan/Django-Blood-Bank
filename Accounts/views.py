@@ -7,6 +7,7 @@ from .models import UserProfile, UserAddress
 from django.contrib.auth.models import User
 from django.contrib.auth.models import User
 from Accounts.models import UserProfile, UserAddress
+from django.contrib import messages
 
 
 def signup(request):
@@ -34,6 +35,8 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 return redirect('home')
+            else:
+                messages.error(request, 'Invalid username or password. Please try again.')
     else:
         form = LoginForm()
     return render(request, 'accounts/login.html', {'form': form})

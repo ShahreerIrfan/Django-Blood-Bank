@@ -1,8 +1,26 @@
 {% extends 'base.html' %}
 {% block body %}
+{% load static %}
+<style>
+    #togglePassword {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    /* Adjust padding to accommodate the eye icon */
+    #password {
+        padding-right: 36px; /* Adjust the value as needed */
+    }
+</style>
 <div class="flex justify-center items-center h-screen">
     <div class="max-w-md bg-white p-8 rounded shadow-md w-full">
         <h2 class="text-2xl font-semibold mb-6">Login</h2>
+        {% if messages %}
+        <div class="mb-4">
+            {% for message in messages %}
+            <div class="text-red-500">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
         <form method="post">
             {% csrf_token %}
             <div class="mb-4">
@@ -10,13 +28,25 @@
                 <input type="text" id="username" name="username" class="form-input rounded-md w-full py-3 pl-3 border border-gray-300" required>
                 <!-- Add pl-3 for left padding -->
             </div>
-            <div class="mb-4">
+            <div class="mb-4 relative">
                 <label for="password" class="block text-gray-700 font-semibold mb-2">Password</label>
-                <input type="password" id="password" name="password" class="form-input rounded-md w-full py-3 pl-3 border border-gray-300" required>
-                <!-- Add pl-3 for left padding -->
+                <div class="relative">
+                    <input type="password" id="password" name="password" class="form-input rounded-md w-full py-3 pl-3 pr-3 border border-gray-300" required>
+                    <span id="togglePassword" class="absolute inset-y-0 right-0 flex items-center px-3 bg-transparent text-gray-700 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                            <path fill-rule="evenodd" d="M10 18a9.956 9.956 0 007.875-3.844l1.292 1.292a1 1 0 101.414-1.414l-16-16a1 1 0 00-1.414 1.414l1.292 1.292A9.956 9.956 0 0010 18zM2 10a8 8 0 0112.73-6.307l1.292 1.292A10 10 0 1010 2l-16-16A1 1 0 002.293.293l16 16a1 1 0 001.414-1.414l-16-16A8 8 0 012 10z" clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                </div>
             </div>
             <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Login</button>
         </form>
     </div>
 </div>
+
+
+<script src="{% static 'js/password_toggle.js' %}"></script>
+
+
 {% endblock %}
