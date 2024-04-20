@@ -33,7 +33,7 @@ def donors(request):
     except EmptyPage:
         user_profiles = paginator.page(paginator.num_pages)
 
-    # Constructing the filter URL.......
+    # Constructing the filter URL......
     filter_url = reverse('donors') + '?'
     if blood_group:
         filter_url += 'blood_group=' + blood_group + '&'
