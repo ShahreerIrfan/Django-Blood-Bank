@@ -5,6 +5,9 @@ from Accounts.constants import BLOOD_GROUP,GENDER,DISTRICT_CHOICES
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.urls import reverse
+from django.shortcuts import render, redirect
+from .forms import BloodRequestForm
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -56,6 +59,23 @@ def donors(request):
 
 
 
+@login_required
+def create_blood_request(request):
+    print("View is called")
+    if request.method == 'POST':
+        form = BloodRequestForm(request.POST)
+        if form.is_valid():
+            blood_request = form.save(commit=False)
+            blood_request.requester = request.user
+            blood_request.save()
+            print("Form is valid and saved")
+            return redirect('user_profile', username=request.user.username)
+        else:
+            print("Form is invalid", form.errors)
+    else:
+        form = BloodRequestForm()
+        print("Form initialized", form)
+    return render(request, 'donationcenters/request_form.html', {'form': form})
 
 
 

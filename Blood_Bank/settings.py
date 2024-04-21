@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'donationcenters',
     'donations',
     'rewards',
+    'widget_tweaks',
     # 'feedback',  # Uncomment if you are using this
 ]
 
