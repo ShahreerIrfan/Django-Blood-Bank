@@ -1,0 +1,113 @@
+BLOOD_GROUP = [
+        ('A+','A+'),
+        ('A-','A-'),
+        ('B+','B+'),
+        ('B-','B-'),
+        ('O+','O+'),
+        ('O-','O-'),
+    ]
+GENDER = [
+        ('Male','Male'),
+        ('Female','Female'),
+]
+
+blood_bag_quantity = [
+    ("1 Bag", "1 Bag"),
+    ("2 Bags", "2 Bags"),
+    ("3 Bags", "3 Bags"),
+    ("4 Bags", "4 Bags"),
+    ("5 Bags", "5 Bags"),
+]
+blood_hemoglobin_levels = [
+    ("1", 1),
+    ("2", 2),
+    ("3", 3),
+    ("4", 4),
+    ("5", 5),
+    ("6", 6),
+    ("7", 7),
+    ("8", 8),
+    ("9", 9),
+    ("10", 10)
+]
+
+
+
+BLOOD_NEED = [
+    ("Oxygen Delivery", "Oxygen Delivery"),
+    ("Clotting", "Clotting"),
+    ("Nutrient Transport", "Nutrient Transport"),
+    ("Waste Removal", "Waste Removal"),
+    ("Immune Response", "Immune Response"),
+]
+
+
+DISTRICT_CHOICES = [
+    ('Chandpur', 'Chandpur'),
+    ('Comilla', 'Comilla'),
+    ('Bagerhat', 'Bagerhat'),
+    ('Bandarban', 'Bandarban'),
+    ('Barguna', 'Barguna'),
+    ('Barisal', 'Barisal'),
+    ('Bhola', 'Bhola'),
+    ('Bogra', 'Bogra'),
+    ('Brahmanbaria', 'Brahmanbaria'),
+    ('Chapainawabganj', 'Chapainawabganj'),
+    ('Chittagong', 'Chittagong'),
+    ('Chuadanga', 'Chuadanga'),
+    ('Cox\'s Bazar', 'Cox\'s Bazar'),
+    ('Dhaka', 'Dhaka'),
+    ('Dinajpur', 'Dinajpur'),
+    ('Faridpur', 'Faridpur'),
+    ('Feni', 'Feni'),
+    ('Gaibandha', 'Gaibandha'),
+    ('Gazipur', 'Gazipur'),
+    ('Gopalganj', 'Gopalganj'),
+    ('Habiganj', 'Habiganj'),
+    ('Jamalpur', 'Jamalpur'),
+    ('Jessore', 'Jessore'),
+    ('Jhalokati', 'Jhalokati'),
+    ('Jhenaidah', 'Jhenaidah'),
+    ('Joypurhat', 'Joypurhat'),
+    ('Khagrachhari', 'Khagrachhari'),
+    ('Khulna', 'Khulna'),
+    ('Kishoreganj', 'Kishoreganj'),
+    ('Kurigram', 'Kurigram'),
+    ('Kushtia', 'Kushtia'),
+    ('Lakshmipur', 'Lakshmipur'),
+    ('Lalmonirhat', 'Lalmonirhat'),
+    ('Madaripur', 'Madaripur'),
+    ('Magura', 'Magura'),
+    ('Manikganj', 'Manikganj'),
+    ('Meherpur', 'Meherpur'),
+    ('Moulvibazar', 'Moulvibazar'),
+    ('Munshiganj', 'Munshiganj'),
+    ('Mymensingh', 'Mymensingh'),
+    ('Naogaon', 'Naogaon'),
+    ('Narail', 'Narail'),
+    ('Narayanganj', 'Narayanganj'),
+    ('Narsingdi', 'Narsingdi'),
+    ('Natore', 'Natore'),
+    ('Nawabganj', 'Nawabganj'),
+    ('Netrokona', 'Netrokona'),
+    ('Nilphamari', 'Nilphamari'),
+    ('Noakhali', 'Noakhali'),
+    ('Pabna', 'Pabna'),
+    ('Panchagarh', 'Panchagarh'),
+    ('Parbatipur', 'Parbatipur'),
+    ('Patuakhali', 'Patuakhali'),
+    ('Pirojpur', 'Pirojpur'),
+    ('Rajbari', 'Rajbari'),
+    ('Rajshahi', 'Rajshahi'),
+    ('Rangamati', 'Rangamati'),
+    ('Rangpur', 'Rangpur'),
+    ('Satkhira', 'Satkhira'),
+    ('Shariatpur', 'Shariatpur'),
+    ('Sherpur', 'Sherpur'),
+    ('Sirajganj', 'Sirajganj'),
+    ('Sunamganj', 'Sunamganj'),
+    ('Sylhet', 'Sylhet'),
+    ('Tangail', 'Tangail'),
+    ('Thakurgaon', 'Thakurgaon')
+]
+

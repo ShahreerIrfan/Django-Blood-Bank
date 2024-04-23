@@ -1,35 +1,47 @@
 {% extends "base.html" %}
-{% load widget_tweaks %}  <!-- Load the widget_tweaks -->
+
 {% block body %}
-<div class="max-w-lg mx-auto p-8">
-    <form method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        {% csrf_token %}
-        <div class="mb-4">
-            <label for="{{ form.reason.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">
-                Reason:
-            </label>
-            {{ form.reason|add_class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" }}
-        </div>
-
-        <div class="mb-4">
-            <label for="{{ form.location.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">
-                Location:
-            </label>
-            {{ form.location|add_class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" }}
-        </div>
-
-        <div class="mb-6">
-            <label for="{{ form.needed_by.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">
-                Needed by (Date):
-            </label>
-            {{ form.needed_by|add_class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" }}
-        </div>
-
-        <div class="flex items-center justify-between">
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                Submit Request
-            </button>
-        </div>
-    </form>
+<div class="max-w-lg mx-auto bg-white shadow-md p-8 rounded border border-gray-300 my-4">
+  <h2 class="text-xl font-bold mb-4">Blood Request Form</h2>
+  <form method="post" class="space-y-4 border border-gray-300 rounded-md p-4">
+    {% csrf_token %}
+    <div class="mb-4 border-b border-gray-300">
+      <label for="id_blood_group" class="block text-sm font-medium text-gray-900 mb-1">Blood Group</label>
+      {{ form.blood_group }}
+    </div>
+    <div class="mb-4 border-b border-gray-300">
+      <label for="id_why_need" class="block text-sm font-medium text-gray-900 mb-1">Reason for Needing Blood</label>
+      {{ form.why_need }}
+    </div>
+    <div class="mb-4 border-b border-gray-300">
+      <label for="id_where_need" class="block text-sm font-medium text-gray-900 mb-1">Where Blood is Needed</label>
+      {{ form.where_need }}
+    </div>
+    <div class="mb-4 border-b border-gray-300">
+      <label for="id_donation_date" class="block text-sm font-medium text-gray-900 mb-1">Donation Date</label>
+      {{ form.donation_date }}
+    </div>
+    <div class="mb-4 border-b border-gray-300">
+      <label for="id_blood_quantity" class="block text-sm font-medium text-gray-900 mb-1">Blood Quantity</label>
+      {{ form.blood_quantity }}
+    </div>
+    <div class="mb-4 border-b border-gray-300">
+      <label for="id_hemoglobin_level" class="block text-sm font-medium text-gray-900 mb-1">Hemoglobin Level</label>
+      {{ form.hemoglobin_level }}
+    </div>
+    <div class="mb-4 border-b border-gray-300">
+      <label for="id_hospital_name" class="block text-sm font-medium text-gray-900 mb-1">Hospital Name</label>
+      {{ form.hospital_name }}
+    </div>
+    <div class="mb-4 border-b border-gray-300">
+      <label for="id_phone_number" class="block text-sm font-medium text-gray-900 mb-1">Phone Number</label>
+      {{ form.phone_number }}
+    </div>
+    <div class="mb-4 border-b border-gray-300">
+      <label for="id_additional_information" class="block text-sm font-medium text-gray-900 mb-1">Additional Information</label>
+      {{ form.additional_information }}
+    </div>
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">Submit</button>
+  </form>
 </div>
 {% endblock %}

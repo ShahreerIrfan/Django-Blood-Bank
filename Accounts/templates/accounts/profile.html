@@ -2,11 +2,6 @@
 
 {% block body %}
 <div class="container mx-auto py-10 relative">
-    {% if profile.has_pending_requests %}
-    <div class="alert alert-warning" role="alert">
-        You have pending blood requests!
-    </div> 
-    {% endif %}
     <div class="rounded-lg bg-gradient-to-r from-green-400 to-blue-500 shadow-lg overflow-hidden">
         <div class="flex flex-col lg:flex-row">
             <!-- Left Sidebar with Tagline -->
