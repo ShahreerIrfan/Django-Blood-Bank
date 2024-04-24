@@ -6,7 +6,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.urls import reverse
 from django.shortcuts import render, redirect
-# from .forms import BloodRequestForm
 from django.contrib.auth.decorators import login_required
 from.forms import BLoodRequestForm
 from .models import BLoodRequest
@@ -28,7 +27,7 @@ def donors(request):
         query &= Q(district=district)
 
     user_profiles_list = UserProfile.objects.select_related('user').filter(query)
-    paginator = Paginator(user_profiles_list, 6)
+    paginator = Paginator(user_profiles_list, 9)
     page = request.GET.get('page')
 
     try:

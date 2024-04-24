@@ -40,19 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',  # Uncommented and required by django-allauth
+    'django.contrib.sites',  
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'crispy_forms',
     'tailwind',
-    # 'theme',  # Uncomment if you are using this
     'Accounts',
     'donationcenters',
     'donations',
     'rewards',
     'widget_tweaks',
-    # 'feedback',  # Uncomment if you are using this
+    'vlog',
 ]
 
 SITE_ID = 1

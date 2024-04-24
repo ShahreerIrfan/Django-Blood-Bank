@@ -15,8 +15,8 @@ class BLoodRequest(models.Model):
     hospital_name = models.CharField(max_length=200, null=True)
     phone_number = models.CharField(max_length=20, null=True)
     additional_information = models.TextField(null=True)
-    is_donate = models.BooleanField(default=False,null=True)  # New field
-    created_at = models.DateTimeField(auto_now_add=True,null=True)  # New field
+    is_donate = models.BooleanField(default=False,null=True) 
+    created_at = models.DateTimeField(auto_now_add=True,null=True)  
 
     def __str__(self):
         return f"Requester is {self.requester}"

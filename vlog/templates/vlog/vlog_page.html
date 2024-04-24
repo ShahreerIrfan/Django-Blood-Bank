@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<style>
+
+.carousel-item img {
+    width: 100%; 
+    height: 800px;
+    object-fit: cover;
+    /* position: top center; */
+    object-position: top center;
+}
+
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        width: 100%; 
+        height: auto; 
+    }
+}
+
+</style>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+<div class="carousel w-full my-class">
+    <div id="item1" class="carousel-item w-full">
+        <img src="{% static 'images/slide-06.webp' %}" alt="My image" class="w-full" />
+    </div> 
+    <div id="item2" class="carousel-item w-full">
+        <img src="{% static 'images/slide-01.webp' %}" alt="My image">
+    </div> 
+    <div id="item3" class="carousel-item w-full">
+      <img src="{% static 'images/slide-02.webp' %}" alt="My image" class="w-full" />
+      
+    </div> 
+    <div id="item4" class="carousel-item w-full">
+        <img src="{% static 'images/slide-03.webp' %}" alt="My image" class="w-full" />
+        
+    </div>
+  </div> 
+  <div class="flex justify-center w-full py-2 gap-2">
+    <a href="#item1" class="btn btn-xs">1</a> 
+    <a href="#item2" class="btn btn-xs">2</a> 
+    <a href="#item3" class="btn btn-xs">3</a> 
+    <a href="#item4" class="btn btn-xs">4</a>
+  </div>
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let slides = document.getElementsByClassName("carousel-item");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        slides[slideIndex-1].style.display = "block";  
+        setTimeout(showSlides, 3000); // Change image every 4 seconds
+    }
+</script>
+{% endblock %}

@@ -55,6 +55,8 @@
             background-color: #2563EB;
         }
     </style>
+    
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -94,6 +96,17 @@
                             All Donors
                         </a>
                     </li>
+                    <li>
+                        <a href="{% url 'vlog' %}"
+                            class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent flex items-center">
+                            <!-- Updated SVG logo for Vlog -->
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M17,4H15V2a2,2,0,0,0-2-2H7A2,2,0,0,0,5,2V4H3A2,2,0,0,0,1,6V16a2,2,0,0,0,2,2H5v2a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V18h2a2,2,0,0,0,2-2V6A2,2,0,0,0,17,4ZM7,2H13V4H7Zm8,16H5V16H15Zm2-3H3V6H17Z"></path>
+                            </svg>
+                            Vlog
+                        </a>
+                    </li>
+                    
                     {% if user.is_authenticated %}
                     <li>
                         <a href="{% url 'user_profile' user.username %}"

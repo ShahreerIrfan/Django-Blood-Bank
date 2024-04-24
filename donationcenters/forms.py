@@ -7,7 +7,7 @@ from .models import BLoodRequest
 class BLoodRequestForm(forms.ModelForm):
     class Meta:
         model = BLoodRequest
-        exclude = ['requester', 'is_donate']  # Exclude is_donate from the form
+        exclude = ['requester', 'is_donate']  
         widgets = {
             'blood_group': forms.Select(attrs={'class': 'form-input'}),
             'why_need': forms.Select(attrs={'class': 'form-input'}),
