@@ -90,7 +90,7 @@ def blood_requests_list(request):
         blood_requests = paginator.page(paginator.num_pages)
 
     return render(request, 'donationcenters/blood_requests_list.html', {'blood_requests': blood_requests})
-
+ 
 
 
 def edit_blood_request(request, pk):
