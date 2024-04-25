@@ -48,17 +48,17 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {% for vlog in vlog_list %}
         <div class="max-w-sm bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden flex flex-col transform transition duration-500 hover:scale-105">
-            <a href="#">
+            <a href="{% url 'single_vlog_post' vlog_id=vlog.id %}">
                 <img class="w-full h-48 object-cover" src="{{ vlog.vlog_image.url }}" alt="{{ vlog.vlog_title }}">
             </a>
             <div class="p-5 flex-grow">
-                <a href="#">
+                <a href="{% url 'single_vlog_post' vlog_id=vlog.id %}">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 overflow-hidden whitespace-nowrap overflow-ellipsis">{{ vlog.vlog_title }}</h5>
                 </a>
                 <p class="mb-3 font-normal text-gray-700 line-clamp-3">{{ vlog.vlog_descrription|truncatewords:20 }}</p>
             </div>
             <div class="mt-auto p-5 bg-gray-100">
-                <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <a href="{% url 'single_vlog_post' vlog_id=vlog.id %}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Read more
                     <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
                 </a>
@@ -67,6 +67,7 @@
         {% endfor %}
     </div>
 </div>
+
 
 <script>
     let slideIndex = 0;

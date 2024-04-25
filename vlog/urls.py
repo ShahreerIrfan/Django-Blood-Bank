@@ -5,4 +5,5 @@ from . import views
 
 urlpatterns = [
     path('', views.vlog_page_view, name='vlog'),
+    path('vlog/<int:vlog_id>/', views.single_vlog_post_view, name='single_vlog_post'),
 ]

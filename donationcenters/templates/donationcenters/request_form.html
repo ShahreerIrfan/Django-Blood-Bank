@@ -1,47 +1,85 @@
 {% extends "base.html" %}
 
 {% block body %}
-<div class="max-w-lg mx-auto bg-white shadow-md p-8 rounded border border-gray-300 my-4">
-  <h2 class="text-xl font-bold mb-4">Blood Request Form</h2>
-  <form method="post" class="space-y-4 border border-gray-300 rounded-md p-4">
+<div class="max-w-2xl mx-auto bg-white shadow-lg p-8 rounded-lg my-4">
+  <h2 class="text-2xl font-bold text-center mb-6">Blood Request Form</h2>
+  <form method="post" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
     {% csrf_token %}
-    <div class="mb-4 border-b border-gray-300">
+
+    <!-- Blood Group -->
+    <div class="col-span-1 mb-4">
       <label for="id_blood_group" class="block text-sm font-medium text-gray-900 mb-1">Blood Group</label>
-      {{ form.blood_group }}
+      <select id="id_blood_group" name="blood_group" class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
+        {% for value, label in form.blood_group.field.choices %}
+          <option value="{{ value }}">{{ label }}</option>
+        {% endfor %}
+      </select>
     </div>
-    <div class="mb-4 border-b border-gray-300">
+
+    <!-- Reason for Needing Blood -->
+    <div class="col-span-1 mb-4">
       <label for="id_why_need" class="block text-sm font-medium text-gray-900 mb-1">Reason for Needing Blood</label>
-      {{ form.why_need }}
+      <select id="id_why_need" name="why_need" class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
+        {% for value, label in form.why_need.field.choices %}
+          <option value="{{ value }}">{{ label }}</option>
+        {% endfor %}
+      </select>
     </div>
-    <div class="mb-4 border-b border-gray-300">
+
+    <!-- Where Blood is Needed -->
+    <div class="col-span-1 mb-4">
       <label for="id_where_need" class="block text-sm font-medium text-gray-900 mb-1">Where Blood is Needed</label>
-      {{ form.where_need }}
+      <input type="text" id="id_where_need" name="where_need" class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
     </div>
-    <div class="mb-4 border-b border-gray-300">
-      <label for="id_donation_date" class="block text-sm font-medium text-gray-900 mb-1">Donation Date</label>
-      {{ form.donation_date }}
+
+    <!-- Donation Date -->
+    <div class="col-span-1 mb-4">
+      <label for="id_donation_date" class="block text-sm font-medium text-gray-900 mb-1">Donation Date & Time</label>
+      <input type="datetime-local" id="id_donation_date" name="donation_date" class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
     </div>
-    <div class="mb-4 border-b border-gray-300">
+
+    <!-- Blood Quantity -->
+    <div class="col-span-1 mb-4">
       <label for="id_blood_quantity" class="block text-sm font-medium text-gray-900 mb-1">Blood Quantity</label>
-      {{ form.blood_quantity }}
+      <select id="id_blood_quantity" name="blood_quantity" class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
+        {% for value, label in form.blood_quantity.field.choices %}
+          <option value="{{ value }}">{{ label }}</option>
+        {% endfor %}
+      </select>
     </div>
-    <div class="mb-4 border-b border-gray-300">
+
+    <!-- Hemoglobin Level -->
+    <div class="col-span-1 mb-4">
       <label for="id_hemoglobin_level" class="block text-sm font-medium text-gray-900 mb-1">Hemoglobin Level</label>
-      {{ form.hemoglobin_level }}
+      <select id="id_hemoglobin_level" name="hemoglobin_level" class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
+        {% for value, label in form.hemoglobin_level.field.choices %}
+          <option value="{{ value }}">{{ label }}</option>
+        {% endfor %}
+      </select>
     </div>
-    <div class="mb-4 border-b border-gray-300">
+
+    <!-- Hospital Name -->
+    <div class="col-span-2 mb-4">
       <label for="id_hospital_name" class="block text-sm font-medium text-gray-900 mb-1">Hospital Name</label>
-      {{ form.hospital_name }}
+      <input type="text" id="id_hospital_name" name="hospital_name" class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
     </div>
-    <div class="mb-4 border-b border-gray-300">
+
+    <!-- Phone Number -->
+    <div class="col-span-2 mb-4">
       <label for="id_phone_number" class="block text-sm font-medium text-gray-900 mb-1">Phone Number</label>
-      {{ form.phone_number }}
+      <input type="text" id="id_phone_number" name="phone_number" class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
     </div>
-    <div class="mb-4 border-b border-gray-300">
+
+    <!-- Additional Information -->
+    <div class="col-span-2 mb-4">
       <label for="id_additional_information" class="block text-sm font-medium text-gray-900 mb-1">Additional Information</label>
-      {{ form.additional_information }}
+      <textarea id="id_additional_information" name="additional_information" rows="4" class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"></textarea>
     </div>
-    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">Submit</button>
+
+    <!-- Submit Button -->
+    <div class="col-span-2">
+      <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">Submit</button>
+    </div>
   </form>
 </div>
 {% endblock %}
