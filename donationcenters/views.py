@@ -11,6 +11,7 @@ from.forms import BLoodRequestForm
 from .models import BLoodRequest
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import user_passes_test
+from .forms import EmergencyBLoodRequestForm
 
 
 def donors(request):
@@ -128,3 +129,18 @@ def complete_blood_donation_details(request, pk):
         blood_request.save()
         return redirect('blood_request_details', pk=pk)
 
+@login_required
+def create_emergency_blood_request(request):
+    if request.method == 'POST':
+        form = EmergencyBLoodRequestForm(request.POST)
+        if form.is_valid():
+            blood_request = form.save(commit=False)
+            blood_request.requester = request.user
+            blood_request.save()
+            return redirect('home')  
+    else:
+        form = EmergencyBLoodRequestForm()
+    return render(request, 'donationcenters/emergency_Blood_request_form.html', {'form': form})
+
+def is_admin_user(user):
+    return user.is_authenticated and (user.is_staff or user.is_superuser)

@@ -11,13 +11,13 @@
         /* Adjust the height as needed */
     }
 
-    .bg-overlay {
+    /* .bg-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-    }
+    } */
 
     .bg-white.dark\:bg-gray-900 {
         color: white;
@@ -58,10 +58,15 @@
                         clip-rule="evenodd"></path>
                 </svg>
             </a>
-            <a href="#"
-                class="text-white inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                Speak to Sales
-            </a>
+            <a style="z-index: 5;" href="{% url 'emergency_requests' %}">
+                <button class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 border-b-4 border-red-800 hover:border-red-600 rounded flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 6.75V3.75m0 3c1.5 0 3 1.2 3 3.75v2.25m0 2.25a5.25 5.25 0 01-10.5 0m10.5 0V9.75c0-1.35-.54-2.7-1.5-3.75m1.5 3v1.5m0 4.5V15m0-1.5a3 3 0 01-6 0m6 0H8.25m7.5-6V3.75M6.75 21h10.5m-8.25-2.25h3.75M3.75 15v-3m16.5 0v3m-18-3c0-2.7 1.5-4.5 3-4.5h1.5m13.5 0h1.5c1.5 0 3 1.8 3 4.5m-21 0h18"/>
+                    </svg>
+                    Emergency Blood Request
+                </button>
+            </a> 
+            
         </div>
         <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <!-- Image content here -->
