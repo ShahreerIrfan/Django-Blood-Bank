@@ -13,3 +13,4 @@ def vlog_page_view(request):
 def single_vlog_post_view(request, vlog_id):
     vlog_post = get_object_or_404(VlogPost, id=vlog_id)
     return render(request, "vlog/single_vlog_post.html", {"vlog_post": vlog_post})
+# ....
