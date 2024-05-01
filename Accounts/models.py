@@ -2,7 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from .constants import BLOOD_GROUP, GENDER,DISTRICT_CHOICES
 from datetime import date
-from decimal import Decimal
+from django.apps import apps
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -31,12 +32,17 @@ class UserProfile(models.Model):
         except ValueError:
             return None
      return None
+    
+    def has_pending_requests(self):
+        BloodRequest = apps.get_model('donationcenters', 'BloodRequest')
+        return BloodRequest.objects.filter(requester=self.user, is_fulfilled=False).exists()
 
     
     
 
     def __str__(self):
         return f'Profile of {self.user.username}'
+
 
 class UserAddress(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='address')

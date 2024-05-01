@@ -63,7 +63,3 @@ def user_profile(request, username):
     }
     return render(request, 'accounts/profile.html', context)
 
-
-
-
-

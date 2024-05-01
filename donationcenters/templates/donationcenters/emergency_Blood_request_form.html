@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="max-w-7xl mx-auto p-4 md:flex">
+  <!-- Article Section -->
+  <div class="md:w-1/2 bg-white p-6 rounded-lg shadow-lg">
+    <h3 class="text-xl font-bold text-red-800 mb-4">Emergency Blood Donation: Understanding the Criteria</h3>
+    <p class="text-gray-700 mb-3">
+      Emergency blood donations are vital in saving lives during critical situations. Understanding when and how you can
+      help is crucial. Here are the criteria and conditions under which emergency blood donations are typically
+      requested:
+    </p>
+    <ul class="list-disc pl-5 text-gray-600 mb-4">
+      <li>Accidents resulting in massive blood loss</li>
+      <li>Surgeries that require extensive blood transfusions</li>
+      <li>Patients suffering from anemia or other conditions leading to severe blood deficiency</li>
+      <li>Rapid response for local disasters or emergencies</li>
+    </ul>
+    <p class="text-gray-700">
+      If you meet the health requirements and wish to help, your contribution can make a significant difference. Please
+      read the following form carefully and provide accurate information to assist us in processing your generous
+      donation swiftly.
+    </p>
+  </div>
+
+  <!-- Form Section -->
+  <div class="md:w-1/2 bg-red-50 p-6 rounded-lg shadow-lg ml-4">
+    <h2 class="text-2xl font-bold text-center text-red-700 mb-6">Emergency Blood Request Form</h2>
+    <form method="post" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+      {% csrf_token %}
+      <!-- Blood Group -->
+      <div class="col-span-1 mb-4">
+        <label for="id_blood_group" class="block text-sm font-medium text-red-700 mb-1">Blood Group</label>
+        <select id="id_blood_group" name="blood_group"
+          class="mt-1 block w-full rounded-md border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-500 focus:ring-opacity-50">
+          {% for value, label in form.blood_group.field.choices %}
+          <option value="{{ value }}">{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Reason for Needing Blood -->
+      <div class="col-span-1 mb-4">
+        <label for="id_why_need" class="block text-sm font-medium text-red-700 mb-1">Reason for Needing Blood</label>
+        <select id="id_why_need" name="why_need"
+          class="mt-1 block w-full rounded-md border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-500 focus:ring-opacity-50">
+          {% for value, label in form.why_need.field.choices %}
+          <option value="{{ value }}">{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Where Blood is Needed -->
+      <div class="col-span-1 mb-4">
+        <label for="id_where_need" class="block text-sm font-medium text-red-700 mb-1">Where Blood is Needed</label>
+        <input type="text" id="id_where_need" name="where_need"
+          class="mt-1 block w-full rounded-md border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-500 focus:ring-opacity-50">
+      </div>
+
+      <!-- Donation Date -->
+      <div class="col-span-1 mb-4">
+        <label for="id_donation_date" class="block text-sm font-medium text-red-700 mb-1">Donation Date & Time</label>
+        <input type="datetime-local" id="id_donation_date" name="donation_date"
+          class="mt-1 block w-full rounded-md border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-500 focus:ring-opacity-50">
+      </div>
+
+      <!-- Blood Quantity -->
+      <div class="col-span-1 mb-4">
+        <label for="id_blood_quantity" class="block text-sm font-medium text-red-700 mb-1">Blood Quantity</label>
+        <select id="id_blood_quantity" name="blood_quantity"
+          class="mt-1 block w-full rounded-md border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-500 focus:ring-opacity-50">
+          {% for value, label in form.blood_quantity.field.choices %}
+          <option value="{{ value }}">{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Hemoglobin Level -->
+      <div class="col-span-1 mb-4">
+        <label for="id_hemoglobin_level" class="block text-sm font-medium text-red-700 mb-1">Hemoglobin Level</label>
+        <select id="id_hemoglobin_level" name="hemoglobin_level"
+          class="mt-1 block w-full rounded-md border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-500 focus:ring-opacity-50">
+          {% for value, label in form.hemoglobin_level.field.choices %}
+          <option value="{{ value }}">{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Hospital Name -->
+      <div class="col-span-2 mb-4">
+        <label for="id_hospital_name" class="block text-sm font-medium text-red-700 mb-1">Hospital Name</label>
+        <input type="text" id="id_hospital_name" name="hospital_name"
+          class="mt-1 block w-full rounded-md border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-500 focus:ring-opacity-50">
+      </div>
+
+      <!-- Phone Number -->
+      <div class="col-span-2 mb-4">
+        <label for="id_phone_number" class="block text-sm font-medium text-red-700 mb-1">Phone Number</label>
+        <input type="text" id="id_phone_number" name="phone_number"
+          class="mt-1 block w-full rounded-md border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-500 focus:ring-opacity-50">
+      </div>
+
+      <!-- Additional Information -->
+      <div class="col-span-2 mb-4">
+        <label for="id_additional_information" class="block text-sm font-medium text-red-700 mb-1">Additional
+          Information</label>
+        <textarea id="id_additional_information" name="additional_information" rows="4"
+          class="mt-1 block w-full rounded-md border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-500 focus:ring-opacity-50"></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="col-span-2">
+        <button type="submit"
+          class="w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

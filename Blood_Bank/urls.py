@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('Accounts.urls')),
     path('donors/', include('donationcenters.urls')),
+    path('vlog/', include('vlog.urls')),
     path('', views.home, name='home'), 
 ]
 

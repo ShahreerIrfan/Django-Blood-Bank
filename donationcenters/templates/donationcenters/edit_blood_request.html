@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="max-w-lg mx-auto bg-white shadow-md p-8 rounded border border-gray-300 my-4">
+  <h2 class="text-xl font-bold mb-4">Edit Blood Request</h2>
+  <form method="post" class="space-y-4">
+    {% csrf_token %}
+    <div class="border border-gray-300 rounded-md">
+      <label for="id_blood_group" class="block mb-2 text-sm font-medium text-gray-900">Blood Group</label>
+      {{ form.blood_group }}
+    </div>
+    <div class="border border-gray-300 rounded-md">
+      <label for="id_why_need" class="block mb-2 text-sm font-medium text-gray-900">Reason for Needing Blood</label>
+      {{ form.why_need }}
+    </div>
+    <div class="border border-gray-300 rounded-md">
+      <label for="id_where_need" class="block mb-2 text-sm font-medium text-gray-900">Where Blood is Needed</label>
+      {{ form.where_need }}
+    </div>
+    <div class="border border-gray-300 rounded-md">
+      <label for="id_donation_date" class="block mb-2 text-sm font-medium text-gray-900">Donation Date</label>
+      {{ form.donation_date }}
+    </div>
+    <div class="border border-gray-300 rounded-md">
+      <label for="id_blood_quantity" class="block mb-2 text-sm font-medium text-gray-900">Blood Quantity</label>
+      {{ form.blood_quantity }}
+    </div>
+    <div class="border border-gray-300 rounded-md">
+      <label for="id_hemoglobin_level" class="block mb-2 text-sm font-medium text-gray-900">Hemoglobin Level</label>
+      {{ form.hemoglobin_level }}
+    </div>
+    <div class="border border-gray-300 rounded-md">
+      <label for="id_hospital_name" class="block mb-2 text-sm font-medium text-gray-900">Hospital Name</label>
+      {{ form.hospital_name }}
+    </div>
+    <div class="border border-gray-300 rounded-md">
+      <label for="id_phone_number" class="block mb-2 text-sm font-medium text-gray-900">Phone Number</label>
+      {{ form.phone_number }}
+    </div>
+    <div class="border border-gray-300 rounded-md">
+      <label for="id_additional_information" class="block mb-2 text-sm font-medium text-gray-900">Additional Information</label>
+      {{ form.additional_information }}
+    </div>
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Save Changes</button>
+  </form>
+</div>
+{% endblock %}
