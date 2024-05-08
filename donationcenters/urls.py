@@ -13,5 +13,7 @@ urlpatterns = [
     path('blood-requests/<int:pk>/', views.blood_request_details, name='blood_request_details'),
     path('complete_blood_donation/<int:pk>/', views.complete_blood_donation, name='complete_blood_donation'),
     path('complete_blood_donation_details_page/<int:pk>/', views.complete_blood_donation_details, name='complete_blood_donation_details'),
+    path('emergency-blood-requests-list/', views.emergency_blood_requests_list, name='emergency-blood-requests-list'),
+    path('emergency-blood-requests-details/<int:pk>/', views.emergency_blood_request_details, name='emergency-blood-details'),
 
 ]

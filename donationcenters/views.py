@@ -12,6 +12,7 @@ from .models import BLoodRequest
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import user_passes_test
 from .forms import EmergencyBLoodRequestForm
+from .models import EmergencyBloodRequest
 
 
 def donors(request):
@@ -128,7 +129,7 @@ def complete_blood_donation_details(request, pk):
         blood_request.is_donate = True
         blood_request.save()
         return redirect('blood_request_details', pk=pk)
-
+# Emergency Blood request Part
 @login_required
 def create_emergency_blood_request(request):
     if request.method == 'POST':
@@ -141,6 +142,25 @@ def create_emergency_blood_request(request):
     else:
         form = EmergencyBLoodRequestForm()
     return render(request, 'donationcenters/emergency_Blood_request_form.html', {'form': form})
+
+def emergency_blood_requests_list(request):
+    emergency_blood_requests_list = EmergencyBloodRequest.objects.order_by('-created_at')
+    paginator = Paginator(emergency_blood_requests_list, 5)  
+
+    page_number = request.GET.get('page')
+    try:
+        blood_requests = paginator.page(page_number)
+    except PageNotAnInteger:
+        blood_requests = paginator.page(1)
+    except EmptyPage:
+        blood_requests = paginator.page(paginator.num_pages)
+
+    return render(request, 'donationcenters/emergency_blood_request_list.html', {'blood_requests': blood_requests})
+
+
+def emergency_blood_request_details(request, pk):
+    blood_request = get_object_or_404(EmergencyBloodRequest, pk=pk)
+    return render(request, 'donationcenters/emergengy_blood_request_details.html', {'blood_request': blood_request})
 
 def is_admin_user(user):
     return user.is_authenticated and (user.is_staff or user.is_superuser)

@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Emergency Blood Requests</h2>
+    <ul>
+        {% for blood_request in blood_requests %}
+        <li class="mb-8 border border-gray-300 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+            <div class="p-6">
+                <p class="text-lg font-semibold text-blue-600 mb-4">Requester: {{ blood_request.requester }}</p>
+                <p class="text-md text-gray-700 mb-2">Blood Group: {{ blood_request.get_blood_group_display }}</p>
+                <p class="text-md text-gray-700 mb-2">Reason: {{ blood_request.get_why_need_display }}</p>
+                <p class="text-md text-gray-700 mb-2">Location: {{ blood_request.where_need }}</p>
+                <!-- Add other fields as needed -->
+            </div>
+            <div class="flex flex-wrap justify-between items-center bg-gray-100 px-6 py-4 rounded-b-lg">
+                <div>
+                    <a href="{% url 'edit_blood_request' blood_request.pk %}"
+                        class="text-blue-500 hover:text-blue-700 mr-4">
+                        <i class="fas fa-pencil-alt mr-2"></i>Edit
+                    </a>
+                    <form action="{% url 'delete_blood_request' blood_request.pk %}" method="post" class="inline">
+                        {% csrf_token %}
+                        <button type="submit" class="text-red-500 hover:text-red-700">
+                            <i class="fas fa-trash-alt mr-2"></i>Delete
+                        </button>
+                    </form>
+                    {% if not blood_request.is_donate %}
+                    <form action="{% url 'complete_blood_donation' blood_request.pk %}" method="post" class="inline">
+                        {% csrf_token %}
+                        <button type="submit"
+                            class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 mr-2">
+                            <i class="fas fa-check-circle mr-2"></i>Complete
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+                {% if blood_request.is_donate %}
+                <button class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 mr-2">
+                    <i class="fas fa-check-circle mr-2"></i>Completed
+                </button>
+                {% endif %}
+                <a href="{% url 'emergency-blood-details' blood_request.pk %}"
+                    class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">
+                    <i class="fas fa-info-circle mr-2"></i>View Details
+                </a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<nav aria-label="Page navigation example" class="max-w-4xl mx-auto mt-8 pb-10">
+    <ul class="inline-flex -space-x-px">
+        <!-- Previous Page Link -->
+        {% if blood_requests.has_previous %}
+        <li>
+            <a href="?page={{ blood_requests.previous_page_number }}"
+                class="px-3 py-2 leading-tight text-gray-500 bg-white border border-r-0 rounded-l-lg hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+        </li>
+        {% endif %}
+
+        <!-- Show first page -->
+        {% if blood_requests.number > 3 %}
+        <li>
+            <a href="?page=1"
+                class="px-3 py-2 leading-tight text-gray-500 bg-white border hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+        </li>
+        {% endif %}
+
+        <!-- Show ellipsis if there are pages between the first page and the current page range -->
+        {% if blood_requests.number > 4 %}
+        <li>
+            <span
+                class="px-3 py-2 leading-tight text-gray-500 bg-white border dark:bg-gray-800 dark:text-gray-400">...</span>
+        </li>
+        {% endif %}
+
+        <!-- Show current page range -->
+        {% for num in blood_requests.paginator.page_range %}
+        {% if num >= blood_requests.number|add:'-2' and num <= blood_requests.number|add:'2' %} <li>
+            {% if blood_requests.number == num %}
+            <a href="?page={{ num }}"
+                class="px-3 py-2 leading-tight bg-blue-500 text-white hover:bg-blue-600 border dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                {{ num }}
+            </a>
+            {% else %}
+            <a href="?page={{ num }}"
+                class="px-3 py-2 leading-tight text-gray-500 bg-white border hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                {{ num }}
+            </a>
+            {% endif %}
+            </li>
+            {% endif %}
+            {% endfor %}
+
+            <!-- Show ellipsis if there are pages between the current page range and the last page -->
+            {% if blood_requests.number < blood_requests.paginator.num_pages|add:'-3' %} <li>
+                <span
+                    class="px-3 py-2 leading-tight text-gray-500 bg-white border dark:bg-gray-800 dark:text-gray-400">...</span>
+                </li>
+                {% endif %}
+
+                <!-- Show last page -->
+                {% if blood_requests.number < blood_requests.paginator.num_pages|add:'-2' %} <li>
+                    <a href="?page={{ blood_requests.paginator.num_pages }}"
+                        class="px-3 py-2 leading-tight text-gray-500 bg-white border hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{
+                        blood_requests.paginator.num_pages }}</a>
+                    </li>
+                    {% endif %}
+
+                    <!-- Next Page Link -->
+                    {% if blood_requests.has_next %}
+                    <li>
+                        <a href="?page={{ blood_requests.next_page_number }}"
+                            class="px-3 py-2 leading-tight text-gray-500 bg-white border rounded-r-lg hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                    </li>
+                    {% endif %}
+    </ul>
+</nav>
+{% endblock %}
