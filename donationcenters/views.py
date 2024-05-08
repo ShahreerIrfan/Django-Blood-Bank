@@ -164,3 +164,5 @@ def emergency_blood_request_details(request, pk):
 
 def is_admin_user(user):
     return user.is_authenticated and (user.is_staff or user.is_superuser)
+
+# ......
