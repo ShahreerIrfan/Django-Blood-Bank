@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'rewards',
     'widget_tweaks',
     'vlog',
-    
 ]
 
 SITE_ID = 1

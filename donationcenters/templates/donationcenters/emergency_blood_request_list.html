@@ -14,32 +14,7 @@
                 <!-- Add other fields as needed -->
             </div>
             <div class="flex flex-wrap justify-between items-center bg-gray-100 px-6 py-4 rounded-b-lg">
-                <div>
-                    <a href="{% url 'edit_blood_request' blood_request.pk %}"
-                        class="text-blue-500 hover:text-blue-700 mr-4">
-                        <i class="fas fa-pencil-alt mr-2"></i>Edit
-                    </a>
-                    <form action="{% url 'delete_blood_request' blood_request.pk %}" method="post" class="inline">
-                        {% csrf_token %}
-                        <button type="submit" class="text-red-500 hover:text-red-700">
-                            <i class="fas fa-trash-alt mr-2"></i>Delete
-                        </button>
-                    </form>
-                    {% if not blood_request.is_donate %}
-                    <form action="{% url 'complete_blood_donation' blood_request.pk %}" method="post" class="inline">
-                        {% csrf_token %}
-                        <button type="submit"
-                            class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 mr-2">
-                            <i class="fas fa-check-circle mr-2"></i>Complete
-                        </button>
-                    </form>
-                    {% endif %}
-                </div>
-                {% if blood_request.is_donate %}
-                <button class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 mr-2">
-                    <i class="fas fa-check-circle mr-2"></i>Completed
-                </button>
-                {% endif %}
+
                 <a href="{% url 'emergency-blood-details' blood_request.pk %}"
                     class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">
                     <i class="fas fa-info-circle mr-2"></i>View Details
