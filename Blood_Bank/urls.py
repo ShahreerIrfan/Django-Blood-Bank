@@ -26,6 +26,7 @@ urlpatterns = [
     path('donors/', include('donationcenters.urls')),
     path('vlog/', include('vlog.urls')),
     path('', views.home, name='home'), 
+    path('support/',include('support.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
