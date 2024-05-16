@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'crispy_forms',
     'tailwind',
     'Accounts',
     'donationcenters',
@@ -54,7 +53,13 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'vlog',
     'support',
+    'crispy_forms',
+    'crispy_tailwind',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = "tailwind"
+
 
 SITE_ID = 1
 

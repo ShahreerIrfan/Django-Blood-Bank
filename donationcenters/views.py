@@ -63,7 +63,7 @@ def donors(request):
 
 
 @login_required
-def create_blood_request(request):
+def create_blood_request(request): 
     if request.method == 'POST':
         form = BLoodRequestForm(request.POST)
         if form.is_valid():

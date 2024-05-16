@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Support page</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="max-w-lg mx-auto p-4 bg-white shadow-md rounded-lg mt-10">
+    <h1 class="text-2xl font-bold mb-6">Help and Support Form</h1>
+    <form action="" method="post" class="space-y-4">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}
