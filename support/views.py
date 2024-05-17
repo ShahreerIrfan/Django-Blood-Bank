@@ -14,3 +14,4 @@ def support(request):
     else:
         form = SupportForm()  # Correctly instantiate the form with parentheses
     return render(request, 'support/support.html', {'form': form})
+# Git add . 
