@@ -10,8 +10,10 @@ def support(request):
             support_instance = form.save(commit=False)
             support_instance.who_need_support = request.user
             support_instance.save()
-            return redirect('home')  # Redirect to a success page or another view
+            return redirect('home')  
     else:
-        form = SupportForm()  # Correctly instantiate the form with parentheses
+        form = SupportForm()  
     return render(request, 'support/support.html', {'form': form})
-# Git add . 
+
+
+# .......
