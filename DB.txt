@@ -1,0 +1,89 @@
+/*Create database LAB5;*/
+
+use LAB5;
+/*Create table DEPARTMENT
+(departmentId int not null identity(1,1) primary key,
+DepartmentName varchar(50) not null,
+NumberofSection int not null,
+Budget int not null);*/
+
+/*insert into DEPARTMENT 
+(DepartmentName, NumberofSection, Budget)
+Values ('HR',1,200000),
+       ('IT',3,600000),
+	   ('Sales',2,400000),
+	   ('Purchase',2,350000),
+	   ('Accounts',2,500000);*/
+
+/*Create table EMPLOYEE
+(EmpolyeeId int not null identity(1,1) primary key,
+EmployeeName varchar(50) not null,
+Salary numeric(7,2) not null,
+Phone varchar(11) not null unique,
+city varchar(50) default 'Dhaka',
+DOB date,
+Departmentid int not null,
+Foreign key(DepartmentId) References Department (DepartmentId)
+);*/
+
+/*insert into EMPLOYEE(EmployeeName, Salary, Phone, City, DOB, DepartmentId)
+Values('Jamal', 16000.00,123456,'Khulna','1982-04-12',1),
+      ('Nasir', 17000.00,7865467,'Pabna','1980-05-05',1),
+	  ('Nesar', 17500.00,7865463,'Pabna','1980-10-05',3);*/
+
+/*select * from department where budget>(select avg (budget) from department);*/
+/*select * from Department where Salary>(select avg(Salary) from employee);*/
+/*select * from Department where budget>(select avg(Salary) from employee);*/
+
+/*select sum(Salary) from employee where departmentId= (select departmentId
+from department where departmentname='Accounts');*/
+
+/*select * from Employee where Salary>(select avg (Salary) from Employee) and departmentid=
+(select DepartmentId  from department where departmentname='HR');*/
+
+/*Create Table Advisor
+(EmployeeId int not null,
+EmployeeName varchar(50) not null,
+SupervsiorId int not null,
+SupervsiorName varchar(50) not null,
+);*/
+
+/*insert into Advisor (EmployeeId, EmployeeName, SupervsiorId, SupervsiorName)
+Values (1,'Rahim',2,'Karim'),
+       (2,'Karim',2,'Karim'),
+	   (3,'jarina',2,'Karim'),
+	   (1,'Misti',5,'Xubayer');*/
+
+	/*Select *from Advisor;*/
+
+/*Select *from Employee Where salary>2000;
+Select *from Department where budget>450000;*/
+
+/*Select *from Employee Where salary>2000 and DepartmentId = any
+(Select DepartmentId from Department where budget>450000);*/
+
+/*Select *from Employee Where salary>(select avg (Salary) from Employee) and DepartmentId = any
+(Select DepartmentId from Department where budget>350000);*/
+
+/* Write a quary for finding th employee Whose salary is greater
+than average salary of the employee
+and whose salary less than employee salary who live in khulna*/
+
+/*Select *from Employee Where salary>(select avg (Salary) from Employee) and Salary < all
+(Select salary from Employee where City='khulna');*/
+
+
+/*Write a quary for finding the employee Whose salary is greater
+than average salary of the employee
+and belongs to any of the department whose budget is greater than average budget*/
+
+/*Select *from Employee Where salary>(select avg (Salary) from Employee) and DepartmentId = any
+(Select DepartmentId from Department where budget> (select avg (Budget) from Department));*/
+
+/* Self Join*/
+/*select *from Employee a join Employee b on a.city=b.city;*/
+
+/*select *from Advisor a join advisor b on a.supervsiorId=b.employeeId;*/
+
+(select *from Employee where city = 'Dhaka') union
+(Select *from EMployee where city ='Dhaka');
