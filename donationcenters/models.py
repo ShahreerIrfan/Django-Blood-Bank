@@ -41,3 +41,4 @@ class EmergencyBloodRequest(models.Model):
         return f"Requester is {self.requester}"
     
 
+# .....

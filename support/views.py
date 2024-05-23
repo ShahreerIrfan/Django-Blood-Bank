@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect
 from .forms import SupportForm
 from.models import Support
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def support(request):
     if request.method == 'POST':
         form = SupportForm(request.POST)
