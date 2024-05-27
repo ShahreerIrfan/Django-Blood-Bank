@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}BMI Calculator{% endblock %}
+
+{% block body %}
+<section class="text-center py-12">
+    <h2 class="text-4xl font-semibold mb-8">BMI Calculator</h2>
+    <p class="text-lg text-gray-700 mb-12">Calculate your Body Mass Index to understand your body weight status.</p>
+    <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+        <form id="bmiForm" onsubmit="calculateBMI(event)">
+            <div class="mb-6">
+                <label for="heightFeet" class="block text-gray-700 text-sm font-bold mb-2">Height (feet)</label>
+                <input type="number" id="heightFeet" name="heightFeet" step="any" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-6">
+                <label for="weight" class="block text-gray-700 text-sm font-bold mb-2">Weight (kg)</label>
+                <input type="number" id="weight" name="weight" step="any" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="flex items-center justify-between">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Calculate BMI
+                </button>
+            </div>
+        </form>
+        <div id="bmiResult" class="mt-6"></div>
+    </div>
+</section>
+
+<script>
+
+</script>
+{% endblock %}

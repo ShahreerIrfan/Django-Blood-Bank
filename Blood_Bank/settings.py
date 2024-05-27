@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'support',
     'crispy_forms',
     'crispy_tailwind',
+    'tools',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
